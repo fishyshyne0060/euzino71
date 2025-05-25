@@ -24,6 +24,8 @@ body {
   transition: transform 0.3s ease;
   z-index: 1000;
   transform: translateX(0); /* visível no desktop */
+  border-radius: 0 10px 10px 0;
+
 }
 
 .sidebar h2 {
