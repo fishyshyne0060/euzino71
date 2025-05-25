@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu Lateral Simples</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Barra lateral */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    /* Esconde a barra em telas pequenas */
+    .sidebar.closed {
+      transform: translateX(-100%);
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid #444;
+      transition: background-color 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #444;
+    }
+
+    /* Conteúdo principal */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      flex: 1;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Quando a sidebar estiver fechada */
+    .content.full {
+      margin-left: 0;
+    }
+
+    /* Botão para abrir/fechar a barra lateral */
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 1100;
+      display: none; /* só aparece no mobile */
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0;
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" id="toggle-btn">&#9776;</button>
+
+  <nav class="sidebar closed" id="sidebar">
+    <h2>Menu</h2>
+    <a href="#">Início</a>
+    <a href="#">Sobre</a>
+    <a href="#">Serviços</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <main class="content full" id="content">
+    <h1>Conteúdo Principal</h1>
+    <p>Esse é um exemplo simples de barra lateral fixa com HTML, CSS e JS puro.</p>
+    <p>Em telas pequenas, você pode abrir e fechar a barra com o botão no canto superior esquerdo.</p>
+  </main>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-btn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebar.classList.toggle('closed');
+
+      if (sidebar.classList.contains('open')) {
+        content.classList.remove('full');
+      } else {
+        content.classList.add('full');
+      }
+    });
+  </script>
+
+</body>
+</html>
