@@ -86,4 +86,17 @@ body {
   .toggle-btn {
     display: block;
   }
+  
+  .sidebar {
+  border-radius: 0 10px 10px 0;
+}
+
+.sidebar.open {
+  border-radius: 0 10px 10px 0;
+}
+
+.sidebar:not(.open) {
+  border-radius: 0 0 0 10px;
+}
+
 }
