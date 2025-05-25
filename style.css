@@ -129,13 +129,15 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
 .wave {
   position: absolute;
-  top: 0;
+  top: 100px; /* altura que quiser */
   left: 0;
   width: 200%;
   height: 150px;
   background: url('...') no-repeat;
   background-size: cover;
   animation: waveScroll 10s linear infinite;
+  z-index: -1;
 }
